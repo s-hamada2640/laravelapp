@@ -1,0 +1,18 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+body {
+  /* background-color: gray; */
+}
+.header {
+  width:100%;
+  height: 100px;
+  background-color: rgb(82, 232, 255);
+}
+.footer {
+  width:100%;
+  height: 50px;
+  background-color: rgb(255, 209, 82);
+}
