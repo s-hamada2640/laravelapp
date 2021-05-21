@@ -1,0 +1,84 @@
+.bords-create {
+  --sideBar-padding         :20px 10px;
+  --sideBar-margin          :2px 4px;
+  /* --sideBor-content-maxWidth:1000px; */
+  --hover-opacity           :0.7;
+  --hover-transition        :0.5;
+  display: flex;
+  height: 80vh;
+  margin-top : 50px;
+  justify-content: center;
+}
+.bords-create-sideBar {
+  width           : 25%;
+  font-size       : 16px;
+  max-width       : 300px;
+  min-width       : 150px;
+
+}
+.bords-create-sideBar-majorItem {
+  padding         : var(--sideBar-padding);
+  margin          : var(--sideBar-margin);
+  background-color: green;
+}
+.bords-create-sideBar-majorItem:hover {
+  opacity         : var(--hover-opacity);
+  transition      : var(--hover-transition);
+}
+.bords-create-sideBar-subItem-button {
+  color           : black;
+  text-decoration : none;
+}
+.bords-create-sideBar-subItem-item {
+  padding         : var(--sideBar-padding);
+  margin          : var(--sideBar-margin);
+  background-color: greenyellow;
+}
+.bords-create-sideBar-subItem-item:hover {
+  opacity         : var(--hover-opacity);
+  transition      : var(--hover-transition);
+}
+
+
+.bords-create-mainBar {
+  width           : 75%;
+  padding         : 0 70px;
+  max-width       : 1400px;
+  min-width       : 700px;
+  background-color: pink;
+}
+.bords-create-mainBar-postedContent {
+  background-color: red;
+}
+.bords-create-mainBar-postedContent-box {
+  background-color: rgb(180, 170, 255);
+  max-width    : 1000px;
+  margin-bottom: 30px;
+}
+
+.bords-create-mainBar-postedContent-box-name {
+  font-size: 16px;
+}
+.bords-create-mainBar-postedContent-box-comment {
+  font-size: 14px;
+  padding-left: 20px;
+}
+
+#reply-commentBox{
+  background-color:red;
+  display: none;
+}
+
+
+.bords-create-mainBar-pageRing {
+  background-color: royalblue;
+  height          : 50px;
+  width           : 100%;
+  margin          : 20px 0;
+}
+
+
+
+.bords-create-mainBar-postForm {
+
+}

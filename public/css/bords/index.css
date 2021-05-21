@@ -1,0 +1,32 @@
+.bords-index {
+  --hover-opacity   :0.7;
+  --hover-transition:0.5;
+  margin            : 100px;
+}
+.bords-index-itemBox {
+  max-width            : 1400px;
+  margin               : 0 auto;
+  display              : grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap                  : 50px 30px;
+}
+.bords-index-itemBox-button {
+  text-decoration: none;
+}
+.bords-index-itemBox-item {
+  min-width    : 220px;
+  max-width    : 220px;
+  margin       : 0 auto;
+  color        : #fff; 
+  background   : #5876a3;
+  overflow     : hidden;
+  text-overflow: ellipsis;   
+  display      : block;
+  border-radius: 8px;
+  text-align   : center;
+  padding      : 30px;
+}
+.bords-index-itemBox-item:hover {
+  opacity         : var(--hover-opacity);
+  transition      : var(--hover-transition);
+}
