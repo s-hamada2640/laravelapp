@@ -12,27 +12,28 @@
 </head>
 
 <body>
+  <div class="footer_fixed">
 
-@section('header')
-  <div class='header'>
-    ヘッダー
+    @section('header')
+      <header>
+        ヘッダー
+      </header>
+    @show
+
+
+      <div class="main">
+        @yield('main')
+      </div>
+
+
+    @section('footer')
+      <footer>
+        フッター
+        copyright 2021 〇〇
+      </footer>
+    @show
+    
+    @yield('script')
   </div>
-@show
-
-
-  <div class="main">
-    @yield('main')
-  </div>
-
-
-@section('footer')
-  <div class='footer'>
-    フッター
-    copyright 2021 〇〇
-  </div>
-@show
-
-@yield('script')
-
 </body>
 </html>
