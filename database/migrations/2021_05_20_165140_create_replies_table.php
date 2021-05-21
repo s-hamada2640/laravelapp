@@ -13,16 +13,14 @@ class CreateRepliesTable extends Migration
      */
     public function up()
     {
-        Schema::create('replies', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name', 50)->nullable(false);
-            $table->string('title', 50);
-            $table->string('comment', 300)->nullable(false);
+        Schema::create('bords', function (Blueprint $table) {
+            $table->increment('id');
+            $table->unsignedInteger('bord_id');
+            $table->foreign('bord_id')->references('id')->on(bords)->nullable(false);
+            $table->string('name', 50);
+            $table->string('comment', 300);
             $table->timestamps();
-            $table->unsignedInteger('big_category_id');
-            $table->foreign('big_category_id')->references('id')->on('big_categories')->nullable(false);
-            $table->unsignedInteger('small_category_id');
-            $table->foreign('small_category_id')->references('id')->on('small_categories')->nullable(false);
+
         });
     }
 
