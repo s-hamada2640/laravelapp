@@ -10,6 +10,8 @@
   justify-content: center;
 }
 .bords-create-sideBar {
+  overflow: scroll;
+  height: 560px;
   width           : 25%;
   font-size       : 16px;
   max-width       : 300px;
@@ -49,6 +51,8 @@
 }
 .bords-create-mainBar-postedContent {
   background-color: red;
+  overflow: scroll;
+  height: 280px;
 }
 .bords-create-mainBar-postedContent-box {
   background-color: rgb(180, 170, 255);
@@ -79,6 +83,3 @@
 
 
 
-.bords-create-mainBar-postForm {
-
-}

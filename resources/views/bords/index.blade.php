@@ -13,40 +13,13 @@
 @section('main')
   <div class='bords-index'>
     <div class="bords-index-itemBox">
-      <a href="/bords/create" class="bords-index-itemBox-button">
-        <div class="bords-index-itemBox-item">
-          カテゴリー大分類
-        </div>        
-      </a>
-
-      <a href="/bords/create" class="bords-index-itemBox-button">
-        <div class="bords-index-itemBox-item">
-        カテゴリー大分類
-        </div>        
-      </a>
-
-      <a href="/bords/create" class="bords-index-itemBox-button">
-        <div class="bords-index-itemBox-item">
-        カテゴリー大分類
-        </div>        
-      </a>
-
-      <a href="/bords/create" class="bords-index-itemBox-button">
-        <div class="bords-index-itemBox-item">
-          test
-        </div>        
-      </a>
-      <a href="/bords/create" class="bords-index-itemBox-button">
-        <div class="bords-index-itemBox-item">
-          testaaaaaaaaaaaa
-        </div>        
-      </a>
-
-      <a href="/bords/create" class="bords-index-itemBox-button">
-        <div class="bords-index-itemBox-item">
-        testaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-        </div>        
-      </a>
+      @foreach( $big_category as $k => $val )
+        <a href="/bords/create?flg={{ $k }}" class="bords-index-itemBox-button">
+          <div class="bords-index-itemBox-item">
+          {{ $val }}
+          </div>
+        </a>
+      @endforeach
     </div>
   </div>
 @endsection

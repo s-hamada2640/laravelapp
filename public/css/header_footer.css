@@ -6,12 +6,20 @@
 body {
   /* background-color: gray; */
 }
-.header {
+.footer_fixed {
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 80px;
+  box-sizing: border-box;
+}
+header {
   width:100%;
   height: 100px;
   background-color: rgb(82, 232, 255);
 }
-.footer {
+footer {
+  position: absolute;
+  bottom: 0;
   width:100%;
   height: 50px;
   background-color: rgb(255, 209, 82);
