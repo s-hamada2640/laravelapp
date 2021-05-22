@@ -15,12 +15,11 @@ class CreateRepliesTable extends Migration
     {
         Schema::create('bords', function (Blueprint $table) {
             $table->increment('id');
-            $table->unsignedInteger('bord_id');
-            $table->foreign('bord_id')->references('id')->on(bords)->nullable(false);
+            $table->integer('bords_id')->unsigned();
             $table->string('name', 50);
             $table->string('comment', 300);
             $table->timestamps();
-
+            $table->foreign("bords_id")->references("id")->on("bords");
         });
     }
 
