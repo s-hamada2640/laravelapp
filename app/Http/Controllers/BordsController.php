@@ -10,16 +10,17 @@ use App\Reply;
 
 class BordsController extends Controller
 {
-    public function index(Request $request) {
+    public function index(Request $request) 
+    {
         $big_category = big_category::all();
         return view('/bords/index', ['big_category' => $big_category]);
     }
-    public function create(Request $request) {
+    public function add(Request $request) 
+    {
+        $big_category = big_category::all();
         $small_category = small_category::all();
-        $big_category = big_category::all();        
-        $flg = $request->flg;
         $bord = bord::all();
-        krsort($bord);
+        $flg = $request->flg;  
         $param = [
             'big_category' => $big_category,
             'small_category' => $small_category,
@@ -27,5 +28,15 @@ class BordsController extends Controller
             'bords' => $bord,
         ];
         return view('/bords/create', $param);
+    }
+
+    public function create(Request $request)
+    {
+        $this->validate($request,bord::$rules);
+        $bord = new bord;
+        $form = $request->all();
+        unset($form['_token']);
+        $bord->fill($form)->save();
+        return redirect('/bords/create');
     }
 }

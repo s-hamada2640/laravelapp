@@ -18,16 +18,16 @@
   <div class='bords-create'>
     <div class='bords-create-sideBar'>
       <div class='bords-create-sideBar-majorItem'>
-        @foreach( $big_category as $k => $val )
-          @if($flg == $k)
-            {{ $val }}
+        @foreach( $big_category as $k )
+          @if($flg == $k->id)
+            {{ $k->bigCategory }}
           @endif
         @endforeach
       </div>
-      @foreach( $small_category as $k => $val)
+      @foreach( $small_category as $k )
         <a href="/bords/create" class="bords-create-sideBar-subItem-button">
           <div class='bords-create-sideBar-subItem-item'>
-            {{ $val }}
+            {{ $k->smallCategory }}
           </div>
         </a>
       @endforeach
@@ -35,27 +35,27 @@
     <div class='bords-create-mainBar'>
       <div class='bords-create-mainBar-postedContent'>
         <!-- ここを増やす -->
-        @foreach( $bords as $k => $val )
-          <div class='bords-create-mainBar-postedContent-box'>
-            <div class='bords-create-mainBar-postedContent-box-name'>
-                <span>{{ $val['id'] }}:
-              </span>
-              <span>{{ $val['name'] }}</span>
-              <span>時間</span>
+        @foreach( $bords as $k )
+            <div class='bords-create-mainBar-postedContent-box'>
+              <div class='bords-create-mainBar-postedContent-box-name'>
+                  <span>{{ $k->id }}:
+                </span>
+                <span>{{ $k->name }}</span>
+                <span>時間</span>
+              </div>
+              <div class='bords-create-mainBar-postedContent-box-comment'>
+                <p>{{ $k->comment }}</p>
+                <span id='reply-comment'>返信</span></br> 
+                <div id='reply-commentBox'>
+                  <form action="" method="post" name="replyComment">
+                    @csrf
+                    <input type="text" name="replyComment" />
+                    <input type="submit" value="返信" />
+                  </form>
+                </div> 
+                <span id='reply-display'>返信コメントの表示</span>
+              </div>  
             </div>
-            <div class='bords-create-mainBar-postedContent-box-comment'>
-              <p>{{ $val['comment'] }}</p>
-              <span id='reply-comment'>返信</span></br> 
-              <div id='reply-commentBox'>
-                <form action="" method="post" name="replyComment">
-                  @csrf
-                  <input type="text" name="replyComment" />
-                  <input type="submit" value="返信" />
-                </form>
-              </div> 
-              <span id='reply-display'>返信コメントの表示</span>
-            </div>  
-          </div>
         @endforeach
         <div class='bords-create-mainBar-pageRing'>
           ページリング
@@ -66,6 +66,21 @@
           @csrf
           <p>名前</p>
           <input type="text" name="name" />
+          <p>タイトル</p>
+          <input type="text" name="title" />
+          <p>カテゴリー</p>
+          <select name="big_categories_id">
+            <option disabled selected value>大項目</option>
+              @foreach( $big_category as $k )
+                <option value="{{ $k->id }}">{{ $k->bigCategory }}</option>
+              @endforeach
+          </select>
+          <select name="small_categories_id">
+            <option disabled selected value>小項目</option>
+              @foreach( $small_category as $k )
+                <option value="{{ $k->id }}">{{ $k->smallCategory }}</option>
+              @endforeach
+          </select>
           <p>コメント</p>
           <textarea name="comment" rows="9" cols="80"></textarea></br>
           <input type="submit" value="送信" />
