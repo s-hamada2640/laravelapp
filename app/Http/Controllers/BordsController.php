@@ -19,13 +19,13 @@ class BordsController extends Controller
     {
         $big_category = big_category::all();
         $small_category = small_category::all();
-        $bord = bord::all();
+        $bords = bord::all();
         $flg = $request->flg;  
         $param = [
             'big_category' => $big_category,
             'small_category' => $small_category,
             'flg' => $flg,
-            'bords' => $bord,
+            'bords' => $bords,
         ];
         return view('/bords/create', $param);
     }
