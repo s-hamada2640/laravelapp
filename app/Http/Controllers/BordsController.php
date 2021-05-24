@@ -19,7 +19,7 @@ class BordsController extends Controller
     {
         $big_category = big_category::all();
         $small_category = small_category::all();
-        $bords = bord::all();
+        $bords = bord::orderBy('id','desc')->Paginate(5);
         $flg = $request->flg;  
         $param = [
             'big_category' => $big_category,

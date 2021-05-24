@@ -2,6 +2,7 @@
 
 @section('link')
   <link rel="stylesheet" href="{{asset('/css/bords/create.css')}}"/>
+  <link rel="stylesheet" href="{{asset('/css/style.css')}}"/>
 @endsection
 
 @section('script')
@@ -41,7 +42,7 @@
                   <span>{{ $k->id }}:
                 </span>
                 <span>{{ $k->name }}</span>
-                <span>時間</span>
+                <span>{{ $k->created_at }}</span>
               </div>
               <div class='bords-create-mainBar-postedContent-box-comment'>
                 <p>{{ $k->comment }}</p>
@@ -58,7 +59,8 @@
             </div>
         @endforeach
         <div class='bords-create-mainBar-pageRing'>
-          ページリング
+          ページリンク
+          {{ $bords->links() }}
         </div>
       </div>
       <div class='bords-create-mainBar-postForm'>
@@ -82,7 +84,7 @@
               @endforeach
           </select>
           <p>コメント</p>
-          <textarea name="comment" rows="9" cols="80"></textarea></br>
+          <textarea name="comment" rows="3" cols="80"></textarea></br>
           <input type="submit" value="送信" />
         </form>
       </div>
