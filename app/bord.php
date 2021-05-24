@@ -17,4 +17,10 @@ class bord extends Model
     public function reply() {
         return $this->hasMany('App/Reply');
     }
+    protected $guarded = array('id');
+
+    public static $rules = array(
+        'name' => 'required',
+        'comment' => 'required',
+    );
 }

@@ -3,5 +3,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+/*              トップページ                */
 Route::get('/bords/index','BordsController@index');
-Route::get('/bords/create','BordsController@create');
+
+/*              投稿機能                */
+Route::get('/bords/create','BordsController@add');
+Route::post('/bords/create','BordsController@create');
