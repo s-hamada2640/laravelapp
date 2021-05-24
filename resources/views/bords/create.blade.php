@@ -66,24 +66,48 @@
       <div class='bords-create-mainBar-postForm'>
         <form action="" method="post" name="mainComment">
           @csrf
-          <p>名前</p>
+          <p>
+            名前
+            @if($errors->has('name'))
+              {{ $errors->first('name' )}}
+            @endif          
+          </p>
           <input type="text" name="name" />
-          <p>タイトル</p>
+          <p>
+            タイトル
+            @if($errors->has('title'))
+              {{ $errors->first('title' )}}
+            @endif          
+          </p>
           <input type="text" name="title" />
-          <p>カテゴリー</p>
+          <p>
+            カテゴリー
+            @if($errors->has('big_categories_id'))
+              {{ $errors->first('big_categories_id')}}
+            @endif
+            @if($errors->has('small_categories_id'))
+              {{ $errors->first('small_categories_id')}}
+            @endif
+          </p>
           <select name="big_categories_id">
             <option disabled selected value>大項目</option>
               @foreach( $big_category as $k )
                 <option value="{{ $k->id }}">{{ $k->bigCategory }}</option>
               @endforeach
           </select>
+
           <select name="small_categories_id">
             <option disabled selected value>小項目</option>
               @foreach( $small_category as $k )
                 <option value="{{ $k->id }}">{{ $k->smallCategory }}</option>
               @endforeach
           </select>
-          <p>コメント</p>
+          <p>
+            コメント
+            @if($errors->has('comment'))
+              {{ $errors->first('comment' )}}
+            @endif          
+          </p>
           <textarea name="comment" rows="3" cols="80"></textarea></br>
           <input type="submit" value="送信" />
         </form>

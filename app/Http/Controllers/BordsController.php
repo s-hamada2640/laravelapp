@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\BordsRequest;
 use App\Big_category;
 use App\Small_category;
 use App\Bord;
@@ -30,7 +31,7 @@ class BordsController extends Controller
         return view('/bords/create', $param);
     }
 
-    public function create(Request $request)
+    public function create(BordsRequest $request)
     {
         $this->validate($request,bord::$rules);
         $bord = new bord;
