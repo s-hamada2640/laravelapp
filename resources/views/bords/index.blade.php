@@ -14,7 +14,7 @@
   <div class='bords-index'>
     <div class="bords-index-itemBox">
     @foreach( $big_category as $k )
-        <a href="/bords/create?flg={{ $k->id }}" class="bords-index-itemBox-button">
+        <a href="/bords/create?bigflg={{ $k->id }}" class="bords-index-itemBox-button">
           <div class="bords-index-itemBox-item">
           {{ $k->bigCategory }}
           </div>
