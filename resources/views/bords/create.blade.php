@@ -25,7 +25,7 @@
         @endforeach
       </div>
         @foreach( $small_category as $k )
-          <a href="/bords/create?bigflg={{$bigflg}}?smallflg={{$k->id}}" class="bords-create-sideBar-subItem-button">
+          <a href="/bords/create?bigflg={{$bigflg}}&smallflg={{$k->id}}" class="bords-create-sideBar-subItem-button">
             <div class='bords-create-sideBar-subItem-item'>
               {{ $k->smallCategory }}
             </div>
