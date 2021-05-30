@@ -21,8 +21,8 @@ class BordsController extends Controller
     {
         $big_category = big_category::all();
         $small_category = small_category::all();
-        $bigflg = $_GET['bigflg'];
-        $smallflg = $request->smallflg;
+        $bigflg = $request->input('bigflg');
+        $smallflg = $request->input('smallflg');
         $bigbords = bord::where('big_categories_id', [$bigflg])
                      ->orderBy('id','desc')
                      ->paginate(5);
