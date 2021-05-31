@@ -23,6 +23,7 @@ class BordsController extends Controller
         $small_category = small_category::all();
         $bigflg = $request->input('bigflg');
         $smallflg = $request->input('smallflg');
+
         $freeword_search = $request->input('freeword_search');
         if(!empty($freeword_search)) {
             $bords = bord::where('name', 'like', '%'.$freeword_search.'%')
@@ -41,6 +42,15 @@ class BordsController extends Controller
                          ->orderBy('id', 'desc')
                          ->paginate(5);
         }
+
+        $bigbords = bord::where('big_categories_id', [$bigflg])
+            ->orderBy('id','desc')
+            ->paginate(5);
+        $smallbords = bord::where('big_categories_id', [$bigflg])
+            ->where('small_categories_id', [$smallflg])
+            ->orderBy('id', 'desc')
+            ->paginate(5);
+
         $flg = [
             'bigflg' => $bigflg,
             'smallflg' => $smallflg,
