@@ -43,14 +43,6 @@ class BordsController extends Controller
                          ->paginate(5);
         }
 
-        $bigbords = bord::where('big_categories_id', [$bigflg])
-            ->orderBy('id','desc')
-            ->paginate(5);
-        $smallbords = bord::where('big_categories_id', [$bigflg])
-            ->where('small_categories_id', [$smallflg])
-            ->orderBy('id', 'desc')
-            ->paginate(5);
-
         $flg = [
             'bigflg' => $bigflg,
             'smallflg' => $smallflg,
@@ -74,6 +66,11 @@ class BordsController extends Controller
         $form = $request->all();
         unset($form['_token']);
         $bord->fill($form)->save();
-        return redirect('/bords/create?bigflg={{$bigflg}}?smallflg={{$smallflg}}');
+        return redirect('/bords/create?bigflg=1');
+    }
+
+    public function reply_create(Request $request)
+    {
+
     }
 }
