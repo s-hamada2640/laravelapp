@@ -23,6 +23,26 @@ class BordsController extends Controller
         $small_category = small_category::all();
         $bigflg = $request->input('bigflg');
         $smallflg = $request->input('smallflg');
+
+        $freeword_search = $request->input('freeword_search');
+        if(!empty($freeword_search)) {
+            $bords = bord::where('name', 'like', '%'.$freeword_search.'%')
+                              ->orWhere('title', 'like', '%'.$freeword_search.'%')
+                              ->orWhere('comment', 'like', '%'.$freeword_search.'%')
+                              ->orderBy('id', 'desc')
+                              ->paginate(5);
+        } elseif(empty($smallflg)) {
+            $bords = bord::where('big_categories_id', [$bigflg])
+                     ->orderBy('id', 'desc')
+                     ->paginate(5);
+
+        } elseif(!empty($smallflg)) {
+            $bords = bord::where('big_categories_id', [$bigflg])
+                         ->where('small_categories_id', [$smallflg])
+                         ->orderBy('id', 'desc')
+                         ->paginate(5);
+        }
+
         $bigbords = bord::where('big_categories_id', [$bigflg])
             ->orderBy('id','desc')
             ->paginate(5);
@@ -30,18 +50,20 @@ class BordsController extends Controller
             ->where('small_categories_id', [$smallflg])
             ->orderBy('id', 'desc')
             ->paginate(5);
+
         $flg = [
             'bigflg' => $bigflg,
             'smallflg' => $smallflg,
+            'freeword_search' => $freeword_search,
         ];
         $param = [
             'big_category' => $big_category,
             'small_category' => $small_category,
             'bigflg' => $bigflg,
             'smallflg' => $smallflg,
+            'freeword_search' => $freeword_search,
             'flg' => $flg,
-            'bigbords' => $bigbords,
-            'smallbords' => $smallbords,
+            'bords' => $bords,
         ];
         return view('/bords/create', $param);
     }
