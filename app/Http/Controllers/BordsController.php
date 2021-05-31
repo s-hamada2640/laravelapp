@@ -24,12 +24,12 @@ class BordsController extends Controller
         $bigflg = $request->input('bigflg');
         $smallflg = $request->input('smallflg');
         $bigbords = bord::where('big_categories_id', [$bigflg])
-                     ->orderBy('id','desc')
-                     ->paginate(5);
+            ->orderBy('id','desc')
+            ->paginate(5);
         $smallbords = bord::where('big_categories_id', [$bigflg])
-                     ->where('small_categories_id', [$smallflg])
-                     ->orderBy('id', 'desc')
-                     ->paginate(5);
+            ->where('small_categories_id', [$smallflg])
+            ->orderBy('id', 'desc')
+            ->paginate(5);
         $flg = [
             'bigflg' => $bigflg,
             'smallflg' => $smallflg,
