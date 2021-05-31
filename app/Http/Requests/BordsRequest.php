@@ -27,21 +27,17 @@ class BordsRequest extends FormRequest
             'name' => 'required|max:50',
             'title' => 'max:50',
             'comment' => 'required|max:300',
-            'big_categories_id' => 'required',
-            'small_categories_id' => 'required',
         ];
     }
 
     public function messages()
-        {
+    {
         return [
             'name.required' => '※必須項目です。',
             'name.max:50' => '※50字以内で入力してください。',
             'title.max:50' => '※50字以内で入力してください。',
             'comment.required' => '※必須項目です。',
             'comment.max:300' => '※300字以内で入力してください。',
-            'big_categories_id.required' => '※大項目が選ばれていません。',
-            'small_categories_id.required' => '※小項目が選ばれていません。',
         ];
     }
 }

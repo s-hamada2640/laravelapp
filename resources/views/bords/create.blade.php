@@ -33,87 +33,52 @@
         @endforeach
       </div>
     <div class='bords-create-mainBar'>
+      <form action="" method="get" class="freeword-search-form">
+        <input type="hidden" name="bigflg" value="{{$bigflg}}">
+        @if(!empty($smallflg))
+          <input type="hidden" name="smallflg" value="{{$smallflg}}">
+        @endif      
+        <input type="text" name="freeword_search" size="110"><input type="submit" value="フリーワード検索">
+      </form>
       <div class='bords-create-mainBar-postedContent'>
         <!-- ここを増やす -->
-        @if(empty($smallflg))
-          @foreach( $bigbords as $bord )        
-            @if($bigflg == $bord->big_categories_id)
-              <div class='bords-create-mainBar-postedContent-box'>
-                <div class='bords-create-mainBar-postedContent-box-name'>
-                    <span>{{ $bord->id }}:
-                  </span>
-                  <span>{{ $bord->name }}</span>
-                  <span>{{ $bord->created_at }}</span>
-                  @foreach( $big_category as $k)
-                    @if($bord->big_categories_id == $k->id)
-                      <span>{{ $k->bigCategory }}</span>
-                    @endif
-                  @endforeach
-                  @foreach( $small_category as $k)
-                    @if($bord->small_categories_id == $k->id)
-                      <span>{{ $k->smallCategory }}</span>
-                    @endif
-                  @endforeach
-                </div>
-                <div class='bords-create-mainBar-postedContent-box-comment'>
-                  <p>{{ $bord->comment }}</p>
-                  <span id='reply-comment'>返信</span></br> 
-                  <div id='reply-commentBox'>
-                    <form action="" method="post" name="replyComment">
-                      @csrf
-                      <input type="text" name="replyComment" />
-                      <input type="submit" value="返信" />
-                    </form>
-                  </div> 
-                  <span id='reply-display'>返信コメントの表示</span>
-                </div>
+          @foreach( $bords as $bord )        
+            <div class='bords-create-mainBar-postedContent-box'>
+              <div class='bords-create-mainBar-postedContent-box-name'>
+                  <span>{{ $bord->id }}:
+                </span>
+                <span>{{ $bord->name }}</span>
+                <span>{{ $bord->created_at }}</span>
+                @foreach( $big_category as $k)
+                  @if($bord->big_categories_id == $k->id)
+                    <span>{{ $k->bigCategory }}</span>
+                  @endif
+                @endforeach
+                @foreach( $small_category as $k)
+                  @if($bord->small_categories_id == $k->id)
+                    <span>{{ $k->smallCategory }}</span>
+                  @endif
+                @endforeach
               </div>
-            @endif
-          @endforeach
-          <div class='bords-create-mainBar-pageRing'>
-            ページリンク
-            {{ $bigbords->appends($flg)->links() }}
-          </div>
-        @elseif(!empty($smallflg))
-          @foreach( $smallbords as $bord )        
-            @if($smallflg == $bord->small_categories_id)
-              <div class='bords-create-mainBar-postedContent-box'>
-                <div class='bords-create-mainBar-postedContent-box-name'>
-                    <span>{{ $bord->id }}:
-                  </span>
-                  <span>{{ $bord->name }}</span>
-                  <span>{{ $bord->created_at }}</span>
-                  @foreach( $big_category as $k)
-                    @if($bord->big_categories_id == $k->id)
-                      <span>{{ $k->bigCategory }}</span>
-                    @endif
-                  @endforeach
-                  @foreach( $small_category as $k)
-                    @if($bord->small_categories_id == $k->id)
-                      <span>{{ $k->smallCategory }}</span>
-                    @endif
-                  @endforeach
-                </div>
-                <div class='bords-create-mainBar-postedContent-box-comment'>
-                  <p>{{ $bord->comment }}</p>
-                  <span id='reply-comment'>返信</span></br> 
-                  <div id='reply-commentBox'>
-                    <form action="" method="post" name="replyComment">
-                      @csrf
-                      <input type="text" name="replyComment" />
-                      <input type="submit" value="返信" />
-                    </form>
-                  </div> 
-                  <span id='reply-display'>返信コメントの表示</span>
-                </div>
+              <div class='bords-create-mainBar-postedContent-box-comment'>
+                <p>タイトル：{{ $bord->title }}</p>
+                <p>{{ $bord->comment }}</p>
+                <span id='reply-comment'>返信</span></br> 
+                <div id='reply-commentBox'>
+                  <form action="" method="post" name="replyComment">
+                    @csrf
+                    <input type="text" name="replyComment" />
+                    <input type="submit" value="返信" />
+                  </form>
+                </div> 
+                <span id='reply-display'>返信コメントの表示</span>
               </div>
-            @endif
+            </div>
           @endforeach
-          <div class='bords-create-mainBar-pageRing'>
-            ページリンク
-            {{ $smallbords->appends($flg)->links() }}
-          </div>
-        @endif
+        <div class='bords-create-mainBar-pageRing'>
+          ページリンク
+          {{ $bords->appends($flg)->links() }}
+        </div>
       </div>
       <div class='bords-create-mainBar-postForm'>
         <form action="" method="post" name="mainComment">
@@ -126,30 +91,12 @@
           </p>
           <input type="text" name="name" />
           <p>
-            タイトル：カテゴリー
+            タイトル
             @if($errors->has('title'))
               {{ $errors->first('title' )}}
-            @endif
-            @if($errors->has('big_categories_id'))
-              {{ $errors->first('big_categories_id')}}
-            @endif
-            @if($errors->has('small_categories_id'))
-              {{ $errors->first('small_categories_id')}}
-            @endif          
+            @endif     
           </p>
           <input type="text" name="title" />
-          <select name="big_categories_id">
-            <option disabled selected value>大項目</option>
-              @foreach( $big_category as $k )
-                <option value="{{ $k->id }}">{{ $k->bigCategory }}</option>
-              @endforeach
-          </select>
-          <select name="small_categories_id">
-            <option disabled selected value>小項目</option>
-              @foreach( $small_category as $k )
-                <option value="{{ $k->id }}">{{ $k->smallCategory }}</option>
-              @endforeach
-          </select>
           <p>
             コメント
             @if($errors->has('comment'))
@@ -157,6 +104,8 @@
             @endif          
           </p>
           <textarea name="comment" rows="3" cols="80"></textarea></br>
+          <input type="hidden" name="big_categories_id" value="{{ $bigflg }}">
+          <input type="hidden" name="small_categories_id" value="{{ $smallflg }}">
           <input type="submit" value="送信" />
         </form>
       </div>
