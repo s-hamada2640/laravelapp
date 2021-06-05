@@ -5,7 +5,8 @@
 @endsection
 
 @section('script')
-  <!-- <script type="text/javascript" src="{{asset('/js/bords/create.js')}}"></script> -->
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+  <script type="text/javascript" src="{{asset('/js/bords/create.js')}}"></script>
 @endsection
 
 @section('title','トップページ')
@@ -31,14 +32,17 @@
             </div>
           </a>
         @endforeach
-      </div>
+    </div>
+
+
     <div class='bords-create-mainBar'>
       <form action="" method="get" class="freeword-search-form">
         <input type="hidden" name="bigflg" value="{{$bigflg}}">
         @if(!empty($smallflg))
           <input type="hidden" name="smallflg" value="{{$smallflg}}">
         @endif      
-        <input type="text" name="freeword_search" size="110"><input type="submit" value="フリーワード検索">
+        <input type="text" name="freeword_search" style="width:485px">
+        <input type="submit" value="フリーワード検索" style="margin-left:5px; padding:0px 6px">
       </form>
       <div class='bords-create-mainBar-postedContent'>
         <!-- ここを増やす -->
@@ -62,56 +66,63 @@
               </div>
               <div class='bords-create-mainBar-postedContent-box-comment'>
                   <p>{{ $bord->comment }}</p>
-                  <span id='reply-comment'>返信</span></br> 
-                  <div id='reply-commentBox'>
+                  <span class='reply-comment'>返信する</span></br> 
+                  <div class='reply-commentBox'>
                     <form action="" method="post" name="replyComment">
                       @csrf
-                      <input type="text" size="5"  placeholder="名前(必須)" name="replyName" />
+                      <input type="text" size="5"  placeholder="名前" name="replyName" />
                       <input type="text" size="50" placeholder="コメント(必須)" name="replyComment" />
                       <!-- 現在選択中のカテゴリIDを送付する必要がある -->
                       <input type="hidden" name="bords_id" value="{{ $bord->id }}">
-                      <input type="submit" value="返信" />
+                      <input type="submit" value="返信" style="padding :0px 6px; margin-left:5px"/>
                     </form>
                   </div> 
-                  <span id='reply-display'>返信コメントの表示</span>
+                  <span class='reply-display'>返信コメントの表示</span>
               </div>
             </div>
           @endforeach
         <div class='bords-create-mainBar-pageRing'>
-          ページリンク
           {{ $bords->appends($flg)->links() }}
         </div>
       </div>
       <!-- コメント投稿フォーム（返信は別） -->
-      <div class='bords-create-mainBar-postForm'>
-        <form action="" method="post" name="mainComment">
-          @csrf
-          <p>
-            名前
-            @if($errors->has('name'))
-              {{ $errors->first('name' )}}
-            @endif          
-          </p>
-          <input type="text" name="name" />
-          <p>
-            タイトル
-            @if($errors->has('title'))
-              {{ $errors->first('title' )}}
-            @endif     
-          </p>
-          <input type="text" name="title" />
-          <p>
-            コメント
-            @if($errors->has('comment'))
-              {{ $errors->first('comment' )}}
-            @endif          
-          </p>
-          <textarea name="comment" rows="3" cols="80"></textarea></br>
-          <input type="hidden" name="big_categories_id" value="{{ $bigflg }}">
-          <input type="hidden" name="small_categories_id" value="{{ $smallflg }}">
-          <input type="submit" value="送信" />
-        </form>
-      </div>
+      @if( !empty($smallflg))
+        <div class='bords-create-mainBar-postForm'>
+          <form action="" method="post" name="mainComment">
+            @csrf
+            <div>
+              <p>
+                名前
+                @if($errors->has('name'))
+                {{ $errors->first('name' )}}
+                @endif          
+              </p>
+              <input type="text" name="name" />
+            </div>
+            <div>
+              <p>
+                タイトル
+                @if($errors->has('title'))
+                {{ $errors->first('title' )}}
+                @endif     
+              </p>
+              <input type="text" name="title" />
+            </div>
+            <div>
+              <p>
+                コメント
+                @if($errors->has('comment'))
+                {{ $errors->first('comment' )}}
+                @endif          
+              </p>
+              <textarea name="comment" rows="3" cols="80"></textarea>
+            </div>
+            <input type="hidden" name="big_categories_id" value="{{ $bigflg }}">
+            <input type="hidden" name="small_categories_id" value="{{ $smallflg }}">
+            <input type="submit" value="送信" style="padding :0px 6px"/>
+          </form>
+        </div>
+      @endif
     </div>
   </div>
 @endsection
@@ -120,3 +131,4 @@
 @section('footer')
   @parent
 @endsection
+

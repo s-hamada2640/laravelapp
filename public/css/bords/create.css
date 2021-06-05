@@ -1,83 +1,102 @@
 .bords-create {
   --sideBar-padding         :20px 10px;
-  --sideBar-margin          :2px 4px;
-  /* --sideBor-content-maxWidth:1000px; */
+  --sideBar-margin          :3px 20px 3px 0px;
   --hover-opacity           :0.7;
   --hover-transition        :0.5;
-  display: flex;
-  height: 80vh;
-  margin-top : 50px;
-  justify-content: center;
+  --reply-comment-font-size :10px;
+  display         : flex;
+  margin-top      : 50px;
+  justify-content : center;
 }
 .bords-create-sideBar {
-  overflow: scroll;
-  height: 560px;
-  width           : 25%;
-  font-size       : 16px;
-  max-width       : 300px;
-  min-width       : 150px;
+  width     : 25%;
+  font-size : 16px;
+  max-width : 300px;
+  min-width : 150px;
 
 }
 .bords-create-sideBar-majorItem {
-  padding         : var(--sideBar-padding);
-  margin          : var(--sideBar-margin);
-  background-color: green;
+  padding          : var(--sideBar-padding);
+  margin           : var(--sideBar-margin);
+  background-color : rgb(80, 80, 80);
+  color            :rgb(255, 255, 255);
+
 }
 .bords-create-sideBar-majorItem:hover {
-  opacity         : var(--hover-opacity);
-  transition      : var(--hover-transition);
+  opacity    : var(--hover-opacity);
+  transition : var(--hover-transition);
 }
 .bords-create-sideBar-subItem-button {
-  color           : black;
+  color           :rgb(255, 255, 255);
   text-decoration : none;
 }
 .bords-create-sideBar-subItem-item {
-  padding         : var(--sideBar-padding);
-  margin          : var(--sideBar-margin);
-  background-color: greenyellow;
+  padding          : var(--sideBar-padding);
+  margin           : var(--sideBar-margin);
+  background-color : rgb(150, 150, 150);;
 }
 .bords-create-sideBar-subItem-item:hover {
-  opacity         : var(--hover-opacity);
-  transition      : var(--hover-transition);
+  opacity    : var(--hover-opacity);
+  transition : var(--hover-transition);
 }
+
 
 
 .bords-create-mainBar {
-  width           : 75%;
-  padding         : 0 70px;
-  max-width       : 1400px;
-  min-width       : 700px;
-  background-color: pink;
+  width            : 75%;
+  padding          : 30px 150px;
+  max-width        : 1400px;
+  min-width        : 700px;
+  background-color :rgb(255, 255, 255);
 }
-.bords-create-mainBar-postedContent {
-  background-color: red;
-  overflow: scroll;
-  height: 330px;
-}
+
 .bords-create-mainBar-postedContent-box {
-  background-color: rgb(180, 170, 255);
-  max-width    : 1000px;
-  margin-bottom: 30px;
+  padding    : 5px 10px;
+  margin     : 20px 0;
+  color      : #5d627b;
+  background : white;
+  border-top : solid 5px #5d627b;
+  box-shadow : 0 3px 5px rgba(0, 0, 0, 0.22);
 }
 
 .bords-create-mainBar-postedContent-box-name {
-  font-size: 16px;
+  font-size : 17px;
 }
 .bords-create-mainBar-postedContent-box-comment {
-  font-size: 14px;
-  padding-left: 20px;
+  font-size    : 15px;
+  padding-left : 20px;
 }
 
-#reply-commentBox{
-  background-color:red;
-  /* display: none; */
+.reply-comment {
+  font-size : var(--reply-comment-font-size);
+  cursor    : pointer;
 }
-
+.reply-commentBox {
+  display : none;
+}
+.reply-display{
+  font-size : var(--reply-comment-font-size);
+  cursor    : pointer;
+}
 
 .bords-create-mainBar-pageRing {
-  background-color: royalblue;
-  height          : 50px;
-  width           : 100%;
-  margin          : 20px 0;
+  text-align  : center;
+  line-height : 40px;
+  height      : 40px;
+  width       : 100%;
+  margin      : 15px 0;
 }
 
+.bords-create-mainBar-postForm>form {
+  border-style : ridge;
+  padding      : 30px;
+}
+.bords-create-mainBar-postForm>form>div{
+  display       : flex;
+  margin-bottom : 10px;
+}
+
+.bords-create-mainBar-postForm>form>div>p{
+  font-size : 14px;
+  width     : 70px;
+}
