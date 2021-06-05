@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRepliesTable extends Migration
+class AddBordsIdRepliesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateRepliesTable extends Migration
      */
     public function up()
     {
-        Schema::create('replies', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name', 50);
-            $table->string('comment', 300);
-            $table->timestamps();
+        Schema::table('replies', function (Blueprint $table)
+        {
+            $table->foreign('bords_id')
+                  ->references('id')
+                  ->on('bords')
+                  ->onDelete('cascade');
         });
     }
 
@@ -28,6 +29,6 @@ class CreateRepliesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('replies');
+        //
     }
 }

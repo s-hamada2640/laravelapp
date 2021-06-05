@@ -27,14 +27,14 @@ class BordsController extends Controller
         $freeword_search = $request->input('freeword_search');
         if(!empty($freeword_search)) {
             $bords = bord::where('name', 'like', '%'.$freeword_search.'%')
-                              ->orWhere('title', 'like', '%'.$freeword_search.'%')
-                              ->orWhere('comment', 'like', '%'.$freeword_search.'%')
-                              ->orderBy('id', 'desc')
-                              ->paginate(5);
+                         ->orWhere('title', 'like', '%'.$freeword_search.'%')
+                         ->orWhere('comment', 'like', '%'.$freeword_search.'%')
+                         ->orderBy('id', 'desc')
+                         ->paginate(5);
         } elseif(empty($smallflg)) {
             $bords = bord::where('big_categories_id', [$bigflg])
-                     ->orderBy('id', 'desc')
-                     ->paginate(5);
+                         ->orderBy('id', 'desc')
+                         ->paginate(5);
 
         } elseif(!empty($smallflg)) {
             $bords = bord::where('big_categories_id', [$bigflg])
@@ -66,7 +66,7 @@ class BordsController extends Controller
         $form = $request->all();
         unset($form['_token']);
         $bord->fill($form)->save();
-        return redirect('/bords/create?bigflg=1');
+        return redirect($_SERVER['HTTP_REFERER']);
     }
 
     public function reply_create(Request $request)
