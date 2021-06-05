@@ -13,28 +13,31 @@
 </head>
 
 <body>
-  <div class="footer_fixed">
+  <div class="body">
 
     @section('header')
-      <header>
-        ヘッダー
-      </header>
-    @show
-
-
-      <div class="main">
-        @yield('main')
+    <header>
+      <div class=all-header>
+        <a href="/bords/index" class="all-header-title">
+          <p>さんきゅうパパ</p>
+        </a>
       </div>
-
-
+    </header>
+    @show
+    
+    
+    <div class="main">
+      @yield('main')
+    </div>
+    
+    
     @section('footer')
-      <footer>
-        フッター
-        copyright 2021 〇〇
-      </footer>
+    <footer class='footer'>
+      Copyright 2021 〇〇
+    </footer>
     @show
     
     @yield('script')
   </div>
-</body>
+  </body>
 </html>

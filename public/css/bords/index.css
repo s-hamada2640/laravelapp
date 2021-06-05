@@ -1,32 +1,41 @@
 .bords-index {
-  --hover-opacity   :0.7;
-  --hover-transition:0.5;
-  margin            : 100px;
+  --hover-opacity    :0.7;
+  --hover-transition :0.5;
+  margin             : 100px 200px;
 }
-.bords-index-itemBox {
-  max-width            : 1400px;
-  margin               : 0 auto;
-  display              : grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  gap                  : 50px 30px;
+.bords-index-main {
+  background-color : rgb(255, 255, 255);
+  padding          : 30px 0 60px;
 }
-.bords-index-itemBox-button {
-  text-decoration: none;
+.bords-index-main-topText {
+  text-align     : center;
+  padding-bottom : 50px;
+  font-size      : 20px;
 }
-.bords-index-itemBox-item {
-  min-width    : 220px;
-  max-width    : 220px;
-  margin       : 0 auto;
-  color        : #fff; 
-  background   : #5876a3;
-  overflow     : hidden;
-  text-overflow: ellipsis;   
-  display      : block;
-  border-radius: 8px;
-  text-align   : center;
-  padding      : 30px;
+.bords-index-main-itemBox {
+  max-width             : 1400px;
+  margin                : 0 auto;
+  display               : grid;
+  grid-template-columns : 1fr 1fr 1fr 1fr 1fr;
+  gap                   : 50px 30px;
 }
-.bords-index-itemBox-item:hover {
-  opacity         : var(--hover-opacity);
-  transition      : var(--hover-transition);
+.bords-index-main-itemBox-button {
+  text-decoration : none;
+}
+.bords-index-main-itemBox-item {
+  min-width     : 220px;
+  max-width     : 220px;
+  margin        : 0 auto;
+  color         : rgb(255, 255, 255);; 
+  background    : rgb(255, 130, 220);
+  overflow      : hidden;
+  text-overflow : ellipsis;   
+  display       : block;
+  border-radius : 8px;
+  text-align    : center;
+  padding       : 30px;
+}
+.bords-index-main-itemBox-item:hover {
+  opacity    : var(--hover-opacity);
+  transition : var(--hover-transition);
 }

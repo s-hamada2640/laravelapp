@@ -1,7 +1,9 @@
-// console.log("test");
+const replyComment = document.getElementsByClassName("reply-comment");
+const replyCommentBox = document.getElementsByClassName("reply-commentBox");
 
-const replyComment = document.getElementById("reply-comment");
-const replyCommentBox = document.getElementById("reply-commentBox");
-replyComment.onclick = function() {
-  (replyCommentBox.style.display=="block")?(replyCommentBox.style.display ="none"):(replyCommentBox.style.display ="block");
-};
+for(let i=0; i < replyComment.length; i++) {
+  replyComment[i].addEventListener("click",() => {
+  (replyCommentBox[i].style.display=="block")?(replyCommentBox[i].style.display ="none"):(replyCommentBox[i].style.display ="block");
+  }, false); 
+
+}
