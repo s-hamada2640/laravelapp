@@ -70,14 +70,20 @@
                   <div class='reply-commentBox'>
                     <form action="" method="post" name="replyComment">
                       @csrf
-                      <input type="text" size="5"  placeholder="名前" name="replyName" />
-                      <input type="text" size="50" placeholder="コメント(必須)" name="replyComment" />
+                      <input type="text" size="5"  placeholder="名前" name="name" />
+                      <input type="text" size="50" placeholder="コメント(必須)" name="comment" />
                       <!-- 現在選択中のカテゴリIDを送付する必要がある -->
                       <input type="hidden" name="bords_id" value="{{ $bord->id }}">
                       <input type="submit" value="返信" style="padding :0px 6px; margin-left:5px"/>
                     </form>
                   </div> 
                   <span class='reply-display'>返信コメントの表示</span>
+                    @foreach( $replies as $reply)
+                      @if( $reply->bords_id == $bord->id)
+                        名前：{{ $reply->name }}
+                        {{ $reply->comment }}
+                      @endif
+                    @endforeach
               </div>
             </div>
           @endforeach
@@ -131,4 +137,3 @@
 @section('footer')
   @parent
 @endsection
-
