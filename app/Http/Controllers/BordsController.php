@@ -25,23 +25,25 @@ class BordsController extends Controller
         $smallflg = $request->input('smallflg');
 
         $freeword_search = $request->input('freeword_search');
+
         if(!empty($freeword_search)) {
             $bords = bord::where('name', 'like', '%'.$freeword_search.'%')
-                              ->orWhere('title', 'like', '%'.$freeword_search.'%')
-                              ->orWhere('comment', 'like', '%'.$freeword_search.'%')
-                              ->orderBy('id', 'desc')
-                              ->paginate(5);
+                         ->orWhere('title', 'like', '%'.$freeword_search.'%')
+                         ->orWhere('comment', 'like', '%'.$freeword_search.'%')
+                         ->orderBy('id', 'desc')
+                         ->paginate(5);
         } elseif(empty($smallflg)) {
             $bords = bord::where('big_categories_id', [$bigflg])
-                     ->orderBy('id', 'desc')
-                     ->paginate(5);
-
+                         ->orderBy('id', 'desc')
+                         ->paginate(5);
         } elseif(!empty($smallflg)) {
             $bords = bord::where('big_categories_id', [$bigflg])
                          ->where('small_categories_id', [$smallflg])
                          ->orderBy('id', 'desc')
                          ->paginate(5);
         }
+
+        $replies = reply::all();
 
         $flg = [
             'bigflg' => $bigflg,
@@ -56,21 +58,25 @@ class BordsController extends Controller
             'freeword_search' => $freeword_search,
             'flg' => $flg,
             'bords' => $bords,
+            'replies' => $replies,
         ];
         return view('/bords/create', $param);
     }
 
     public function create(BordsRequest $request)
     {
-        $bord = new bord;
-        $form = $request->all();
-        unset($form['_token']);
-        $bord->fill($form)->save();
-        return redirect('/bords/create?bigflg=1');
-    }
-
-    public function reply_create(Request $request)
-    {
-
+        if(!empty($request->bords_id)){
+            $reply = new reply;
+            $form = $request->all();
+            unset($form['_token']);
+            $reply->fill($form)->save();
+            return redirect($_SERVER['HTTP_REFERER']);
+        } else {
+            $bord = new bord;
+            $form = $request->all();
+            unset($form['_token']);
+            $bord->fill($form)->save();
+            return redirect($_SERVER['HTTP_REFERER']);
+        }
     }
 }
