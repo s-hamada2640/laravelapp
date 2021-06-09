@@ -24,7 +24,7 @@ class BordsRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:50',
+            'name' => 'max:50',
             'title' => 'max:50',
             'comment' => 'required|max:300',
         ];
@@ -33,7 +33,6 @@ class BordsRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => '※必須項目です。',
             'name.max:50' => '※50字以内で入力してください。',
             'title.max:50' => '※50字以内で入力してください。',
             'comment.required' => '※必須項目です。',

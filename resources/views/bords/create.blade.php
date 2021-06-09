@@ -74,7 +74,7 @@
                       <input type="text" size="50" placeholder="コメント(必須)" name="comment" />
                       <!-- 現在選択中のカテゴリIDを送付する必要がある -->
                       <input type="hidden" name="bords_id" value="{{ $bord->id }}">
-                      <input type="submit" value="返信" style="padding :0px 6px; margin-left:5px"/>
+                      <input type="submit" name="reply" value="返信" style="padding :0px 6px; margin-left:5px"/>
                     </form>
                   </div> 
                   <span class='reply-display'>返信コメントの表示</span>
@@ -125,7 +125,7 @@
             </div>
             <input type="hidden" name="big_categories_id" value="{{ $bigflg }}">
             <input type="hidden" name="small_categories_id" value="{{ $smallflg }}">
-            <input type="submit" value="送信" style="padding :0px 6px"/>
+            <input type="submit" name="bord" value="送信" style="padding :0px 6px"/>
           </form>
         </div>
       @endif
