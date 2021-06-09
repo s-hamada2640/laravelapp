@@ -1,7 +1,7 @@
 @extends('header_footer')
 
 @section('link')
-  <link rel="stylesheet" href="{{mix('/css/bords/create.css')}}"/>
+  <link rel="stylesheet" href="{{asset('/css/bords/create.css')}}"/>
 @endsection
 
 @section('script')
