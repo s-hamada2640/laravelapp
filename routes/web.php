@@ -1,5 +1,10 @@
 <?php
 
+if (config('app.env') === 'production' or config('app.env') === 'staging') {
+    // asset()やurl()がhttpsで生成される
+    URL::forceScheme('https');
+}
+
 Route::get('/', function () {
     return view('welcome');
 });
