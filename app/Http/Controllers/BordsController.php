@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\BordsRequest;
-use App\Big_category;
-use App\Small_category;
-use App\Bord;
-use App\Reply;
+use App\big_category;
+use App\small_category;
+use App\bord;
+use App\reply;
 
 class BordsController extends Controller
 {
