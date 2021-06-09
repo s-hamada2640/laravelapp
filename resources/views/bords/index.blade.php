@@ -1,7 +1,7 @@
 @extends('header_footer')
 
 @section('link')
-  <link rel="stylesheet" href="{{asset('/css/bords/index.css')}}"/>
+  <link rel="stylesheet" href="{{mix('/css/bords/index.css')}}"/>
 @endsection
 
 @section('title','トップページ')
