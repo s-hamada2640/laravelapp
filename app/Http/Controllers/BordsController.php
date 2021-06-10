@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\BordsRequest;
-use App\Big_category;
-use App\Small_category;
-use App\Bord;
-use App\Reply;
+use App\big_category;
+use App\small_category;
+use App\bord;
+use App\reply;
 
 class BordsController extends Controller
 {
@@ -65,17 +65,29 @@ class BordsController extends Controller
 
     public function create(BordsRequest $request)
     {
-        if(!empty($request->bords_id)){
+        if(!empty($_POST['reply'])){
             $reply = new reply;
-            $form = $request->all();
-            unset($form['_token']);
-            $reply->fill($form)->save();
+            $reply->bords_id = $request->bords_id;
+            if( empty($request->name) ){
+                $reply->name = '名無しさん';
+            } else {
+                $reply->name = $request->name;
+            }
+            $reply->comment = $request->comment;
+            $reply->save();
             return redirect($_SERVER['HTTP_REFERER']);
-        } else {
+        } elseif(!empty($_POST['bord'])) {
             $bord = new bord;
-            $form = $request->all();
-            unset($form['_token']);
-            $bord->fill($form)->save();
+            if( empty($request->name) ){
+                $bord->name = '名無しさん';
+            } else {
+                $bord->name = $request->name;
+            }
+            $bord->title = $request->title;
+            $bord->comment = $request->comment;
+            $bord->big_categories_id = $request->big_categories_id;
+            $bord->small_categories_id = $request->small_categories_id;
+            $bord->save();
             return redirect($_SERVER['HTTP_REFERER']);
         }
     }
