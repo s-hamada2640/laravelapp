@@ -65,6 +65,7 @@
                 @endforeach
               </div>
               <div class='bords-create-mainBar-postedContent-box-comment'>
+                  <p>{{ $bord->title }}</p>
                   <p>{{ $bord->comment }}</p>
                   <span class='reply-comment'>返信する</span></br> 
                   <div class='reply-commentBox'>
