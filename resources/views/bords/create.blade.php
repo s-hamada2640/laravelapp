@@ -16,7 +16,7 @@
 @endsection
 
 @section('main')
-  <div class='bords-create'>
+  <div id='bords-create'>
     <div class='bords-create-sideBar'>
       <div class='bords-create-sideBar-majorItem'>
         @foreach( $big_category as $k )
@@ -79,12 +79,18 @@
                     </form>
                   </div> 
                   <span class='reply-display'>返信コメントの表示</span>
+                  <div class='reply-comment-listBox'>
+                  <?php $count = 1; ?>
                     @foreach( $replies as $reply)
-                      @if( $reply->bords_id == $bord->id)
-                        名前：{{ $reply->name }}
-                        {{ $reply->comment }}
-                      @endif
+                      <div class='reply-comment-list'>
+                        @if( $reply->bords_id == $bord->id)
+                          {{$count}}：{{ $reply->name }}</br>
+                          &emsp;{{ $reply->comment }}
+                          <?php $count++; ?>
+                        @endif
+                      </div>
                     @endforeach
+                  </div>
               </div>
             </div>
           @endforeach
@@ -131,6 +137,11 @@
         </div>
       @endif
     </div>
+  </div>
+
+
+  <div id='top-btn'>
+    <p>∧</p>
   </div>
 @endsection
 

@@ -1,4 +1,4 @@
-.bords-create {
+#bords-create {
   --sideBar-padding         :20px 10px;
   --sideBar-margin          :3px 20px 3px 0px;
   --hover-opacity           :0.7;
@@ -8,26 +8,27 @@
   margin-top      : 50px;
   justify-content : center;
 }
+.all-header {
+  min-width : 0px;
+}
 .bords-create-sideBar {
   width     : 25%;
   font-size : 16px;
   max-width : 300px;
-  min-width : 150px;
-
+  min-width : 200px;
 }
 .bords-create-sideBar-majorItem {
   padding          : var(--sideBar-padding);
   margin           : var(--sideBar-margin);
   background-color : rgb(80, 80, 80);
-  color            :rgb(255, 255, 255);
-
+  color            : rgb(255, 255, 255);
 }
 .bords-create-sideBar-majorItem:hover {
   opacity    : var(--hover-opacity);
   transition : var(--hover-transition);
 }
 .bords-create-sideBar-subItem-button {
-  color           :rgb(255, 255, 255);
+  color           : rgb(255, 255, 255);
   text-decoration : none;
 }
 .bords-create-sideBar-subItem-item {
@@ -47,9 +48,11 @@
   padding          : 30px 150px;
   max-width        : 1400px;
   min-width        : 700px;
-  background-color :rgb(255, 255, 255);
+  background-color : rgb(255, 255, 255);
 }
-
+.bords-create-mainBar-postedContent-box {
+  min-width: 550px;
+}
 .bords-create-mainBar-postedContent-box {
   padding    : 5px 10px;
   margin     : 20px 0;
@@ -74,10 +77,21 @@
 .reply-commentBox {
   display : none;
 }
-.reply-display{
+.reply-display {
   font-size : var(--reply-comment-font-size);
   cursor    : pointer;
 }
+
+.reply-comment-listBox {
+  display      : none;
+}
+
+.reply-comment-list {
+  font-size    : 12px;
+  padding-left : 10px;
+}
+
+
 
 .bords-create-mainBar-pageRing {
   text-align  : center;
@@ -99,4 +113,29 @@
 .bords-create-mainBar-postForm>form>div>p{
   font-size : 14px;
   width     : 70px;
+}
+
+#top-btn {
+  display          : none;
+  position         : fixed;
+  right            : 50px;
+  bottom           : 50px;
+  color            : rgb(255, 255, 255);
+  background-color : rgb(80, 80, 80);
+  border-radius    : 25px;
+  height           : 50px;
+  width            : 50px;
+  opacity          : 0.5;
+  font-size        : 0px;
+  text-align       : center;
+  line-height      : 50px;
+  font-size        : 30px;
+}
+#top-btn > p {
+  transform   : scale(1.7, 1.0)
+}
+
+#top-btn:hover {
+  opacity : 1.0;
+  cursor  : pointer;
 }
