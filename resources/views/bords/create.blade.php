@@ -18,23 +18,19 @@
 @section('main')
   <div id='bords-create'>
     <div class='bords-create-sideBar'>
-      <div class='bords-create-sideBar-majorItem'>
-        @foreach( $big_category as $k )
-          @if($bigflg == $k->id)
-            {{ $k->bigCategory }}
-          @endif
-        @endforeach
-      </div>
-        @foreach( $small_category as $k )
-          <a href="/bords/create?bigflg={{$bigflg}}&smallflg={{$k->id}}" class="bords-create-sideBar-subItem-button">
-            <div class='bords-create-sideBar-subItem-item'>
-              {{ $k->smallCategory }}
-            </div>
-          </a>
-        @endforeach
+      <a href="/bords/create?bigflg={{$bigflg}}">
+        <div class='bords-create-sideBar-majorItem'>
+          {{$big_category[$bigflg-1]-> bigCategory }}
+        </div>
+      </a>
+      @foreach( $small_category as $k )
+        <a href="/bords/create?bigflg={{$bigflg}}&smallflg={{$k->id}}" class="bords-create-sideBar-subItem-button">
+          <div class='bords-create-sideBar-subItem-item'>
+            {{ $k->smallCategory }}
+          </div>
+        </a>
+      @endforeach
     </div>
-
-
     <div class='bords-create-mainBar'>
       <form action="" method="get" class="freeword-search-form">
         <input type="hidden" name="bigflg" value="{{$bigflg}}">
@@ -65,32 +61,32 @@
                 @endforeach
               </div>
               <div class='bords-create-mainBar-postedContent-box-comment'>
-                  <p>{{ $bord->title }}</p>
-                  <p>{{ $bord->comment }}</p>
-                  <span class='reply-comment'>返信する</span></br> 
-                  <div class='reply-commentBox'>
-                    <form action="" method="post" name="replyComment">
-                      @csrf
-                      <input type="text" size="5"  placeholder="名前" name="name" />
-                      <input type="text" size="50" placeholder="コメント(必須)" name="comment" />
-                      <!-- 現在選択中のカテゴリIDを送付する必要がある -->
-                      <input type="hidden" name="bords_id" value="{{ $bord->id }}">
-                      <input type="submit" name="reply" value="返信" style="padding :0px 6px; margin-left:5px"/>
-                    </form>
-                  </div> 
-                  <span class='reply-display'>返信コメントの表示</span>
-                  <div class='reply-comment-listBox'>
-                  <?php $count = 1; ?>
-                    @foreach( $replies as $reply)
-                      <div class='reply-comment-list'>
-                        @if( $reply->bords_id == $bord->id)
-                          {{$count}}：{{ $reply->name }}</br>
-                          &emsp;{{ $reply->comment }}
-                          <?php $count++; ?>
-                        @endif
-                      </div>
-                    @endforeach
-                  </div>
+                <p>{{ $bord->title }}</p>
+                <p>{{ $bord->comment }}</p>
+                <span class='reply-comment'>返信する</span></br> 
+                <div class='reply-commentBox'>
+                  <form action="" method="post" name="replyComment">
+                    @csrf
+                    <input type="text" size="5"  placeholder="名前" name="name" />
+                    <input type="text" size="50" placeholder="コメント(必須)" name="comment" />
+                    <!-- 現在選択中のカテゴリIDを送付する必要がある -->
+                    <input type="hidden" name="bords_id" value="{{ $bord->id }}">
+                    <input type="submit" name="reply" value="返信" style="padding :0px 6px; margin-left:5px"/>
+                  </form>
+                </div> 
+                <span class='reply-display'>返信コメントの表示</span>
+                <div class='reply-comment-listBox'>
+                <?php $count = 1; ?>
+                  @foreach( $replies as $reply)
+                    <div class='reply-comment-list'>
+                      @if( $reply->bords_id == $bord->id)
+                        {{$count}}：{{ $reply->name }}</br>
+                        &emsp;{{ $reply->comment }}
+                        <?php $count++; ?>
+                      @endif
+                    </div>
+                  @endforeach
+                </div>
               </div>
             </div>
           @endforeach
