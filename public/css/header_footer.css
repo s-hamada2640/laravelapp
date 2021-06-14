@@ -8,7 +8,7 @@ body {
   background-color : rgb(230, 230, 230);
   background-image : radial-gradient(rgb(240, 240, 240) 20%, transparent 30%);
   background-size  : 40px 40px;
-  overflow         : hidden;
+  overflow-x       : hidden;
 }
 
 .body {
