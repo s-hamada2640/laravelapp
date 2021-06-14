@@ -61,7 +61,6 @@
   border-top : solid 5px #5d627b;
   box-shadow : 0 3px 5px rgba(0, 0, 0, 0.22);
 }
-
 .bords-create-mainBar-postedContent-box-name {
   font-size : 17px;
 }
@@ -69,7 +68,6 @@
   font-size    : 15px;
   padding-left : 20px;
 }
-
 .reply-comment {
   font-size : var(--reply-comment-font-size);
   cursor    : pointer;
@@ -81,7 +79,6 @@
   font-size : var(--reply-comment-font-size);
   cursor    : pointer;
 }
-
 .reply-comment-listBox {
   display      : none;
 }
@@ -100,7 +97,6 @@
   width       : 100%;
   margin      : 15px 0;
 }
-
 .bords-create-mainBar-postForm>form {
   border-style : ridge;
   padding      : 30px;
@@ -109,7 +105,6 @@
   display       : flex;
   margin-bottom : 10px;
 }
-
 .bords-create-mainBar-postForm>form>div>p{
   font-size : 14px;
   width     : 70px;
