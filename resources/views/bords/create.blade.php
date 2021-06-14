@@ -37,7 +37,7 @@
         @if(!empty($smallflg))
           <input type="hidden" name="smallflg" value="{{$smallflg}}">
         @endif      
-        <input type="text" name="freeword_search" style="width:485px">
+        <input type="text" name="freeword_search" style="width:310px">
         <input type="submit" value="フリーワード検索" style="margin-left:5px; padding:0px 6px">
       </form>
       <div class='bords-create-mainBar-postedContent'>
